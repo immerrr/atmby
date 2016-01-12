@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+   <link rel="stylesheet" href="https://rawgit.com/andrewgiessel/leafletstuff/master/leaflet.css" />
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+   <link rel="stylesheet" href="https://rawgit.com/lvoogdt/Leaflet.awesome-markers/2.0/develop/dist/leaflet.awesome-markers.css">
+   <script src="https://rawgithub.com/lvoogdt/Leaflet.awesome-markers/2.0/develop/dist/leaflet.awesome-markers.js"></script>
+
+
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/MarkerCluster.Default.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/MarkerCluster.css">
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/leaflet.markercluster-src.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/leaflet.markercluster.js"></script>
+
+   <link rel="stylesheet" href="https://birdage.github.io/Leaflet.awesome-markers/dist/leaflet.awesome.rotate.css">
+
+   
+   
+   
+   
+
+   <style>
+
+      html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      #map {
+        position:absolute;
+        top:0;
+        bottom:0;
+        right:0;
+        left:0;
+      }
+
+   </style>
+</head>
+
+<body>
+
+   <div class="folium-map" id="folium_19a0862d97f44396bb83a875bbbd6a41" style="width: 100%; height: 100%"></div>
+
+   <script>
+
+      
+
+      var base_tile = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          maxZoom: 18,
+          minZoom: 1,
+          attribution: 'Map data (c) <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+      });
+
+      var baseLayer = {
+        "Base Layer": base_tile
+      };
+
+      /*
+      addition of the wms layers
+      */
+
+      
+
+      /*
+      addition of the tile layers
+      */
+      
+
+      /*
+      list of layers to be added
+      */
+      var layer_list = {
+      
+      };
+
+      /*
+      Bounding box.
+      */
+      var southWest = L.latLng(-90, -180),
+          northEast = L.latLng(90, 180),
+          bounds = L.latLngBounds(southWest, northEast);
+
+      /*
+      Creates the map and adds the selected layers
+      */
+      var map = L.map('folium_19a0862d97f44396bb83a875bbbd6a41', {
+                                       center:[53.902257, 27.561831],
+                                       zoom: 10,
+                                       maxBounds: bounds,
+                                       layers: [base_tile]
+                                     });
+
+      L.control.layers(baseLayer, layer_list).addTo(map);
+
+      /*
+      addition of the image layers
+      */
+      
+      
+      //cluster group
+      var clusteredmarkers = L.markerClusterGroup();
+      //section for adding clustered markers
+      
+      var marker_1_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_1 = L.marker([53.88938, 
+							28.03368],
+							{'icon':marker_1_icon}
+							);
+      marker_1.bindPopup("\u041c\u0418\u041d\u0421\u041a, \u0410\u044d\u0440\u043e\u043f\u043e\u0440\u0442 \u041c\u0438\u043d\u0441\u043a 2<br/>BYR, USD, EUR</br>\u0432 \u0440\u0435\u0436\u0438\u043c\u0435 \u0440\u0430\u0431\u043e\u0442\u044b \u043e\u0440\u0433\u0430\u043d\u0438\u0437\u0430\u0446\u0438\u0438<br/>\u0410\u044d\u0440\u043e\u043f\u043e\u0440\u0442 \u041c\u0438\u043d\u0441\u043a 2");
+      marker_1._popup.options.maxWidth = 300;
+      clusteredmarkers.addLayer(marker_1)
+      
+      var marker_2_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_2 = L.marker([53.800836, 
+							27.593587],
+							{'icon':marker_2_icon}
+							);
+      marker_2.bindPopup("\u041c\u0418\u041d\u0421\u041a, \u0411\u0430\u0431\u0443\u0448\u043a\u0438\u043d\u0430 39<br/>BYR, USD, EUR</br>24 \u0447\u0430\u0441\u0430<br/>\u041e\u0410\u041e \"\u0411\u0435\u043b\u043c\u0430\u0433\u0438\u0441\u0442\u0440\u0430\u043b\u044c\u0430\u0432\u0442\u043e\u0442\u0440\u0430\u043d\u0441\"");
+      marker_2._popup.options.maxWidth = 300;
+      clusteredmarkers.addLayer(marker_2)
+      
+      var marker_3_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_3 = L.marker([53.903769, 
+							27.585672],
+							{'icon':marker_3_icon}
+							);
+      marker_3.bindPopup("\u041c\u0418\u041d\u0421\u041a, \u0411\u044f\u0434\u0443\u043b\u0438 11<br/>BYR, USD, EUR</br>24 \u0447\u0430\u0441\u0430<br/>\u0417\u0410\u041e \"\u0418\u0434\u0435\u044f \u0411\u0430\u043d\u043a\"");
+      marker_3._popup.options.maxWidth = 300;
+      clusteredmarkers.addLayer(marker_3)
+      
+      var marker_4_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_4 = L.marker([53.946731, 
+							27.665191],
+							{'icon':marker_4_icon}
+							);
+      marker_4.bindPopup("\u041c\u0418\u041d\u0421\u041a, \u0413\u0438\u043d\u0442\u043e\u0432\u0442\u0430 1<br/>BYR, USD, EUR</br>7:00 - 23:00<br/>\u0411\u0438\u0437\u043d\u0435\u0441-\u0446\u0435\u043d\u0442\u0440 \u0410-100");
+      marker_4._popup.options.maxWidth = 300;
+      clusteredmarkers.addLayer(marker_4)
+      
+      var marker_5_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_5 = L.marker([53.925916, 
+							27.444781],
+							{'icon':marker_5_icon}
+							);
+      marker_5.bindPopup("\u041c\u0418\u041d\u0421\u041a, \u0413\u043e\u043b\u0443\u0431\u043a\u0430 2<br/>BYR, USD, EUR</br>\u0432 \u0440\u0435\u0436\u0438\u043c\u0435 \u0440\u0430\u0431\u043e\u0442\u044b \u043e\u0440\u0433\u0430\u043d\u0438\u0437\u0430\u0446\u0438\u0438<br/>\u0422\u0426 \"\u0411\u043e\u043d\u0443\u0441\"");
+      marker_5._popup.options.maxWidth = 300;
+      clusteredmarkers.addLayer(marker_5)
+      
+      var marker_6_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_6 = L.marker([53.892246, 
+							27.529096],
+							{'icon':marker_6_icon}
+							);
+      marker_6.bindPopup("\u041c\u0418\u041d\u0421\u041a, \u0414\u0437\u0435\u0440\u0436\u0438\u043d\u0441\u043a\u043e\u0433\u043e 1\u0435<br/>BYR, USD, EUR</br>24 \u0447\u0430\u0441\u0430<br/>\u0413\u043e\u0441\u0442\u0438\u043d\u0438\u0446\u0430 \"\u0420\u0435\u043d\u0435\u0441\u0441\u0430\u043d\u0441\"");
+      marker_6._popup.options.maxWidth = 300;
+      clusteredmarkers.addLayer(marker_6)
+      
+      var marker_7_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_7 = L.marker([53.858261, 
+							27.476536],
+							{'icon':marker_7_icon}
+							);
+      marker_7.bindPopup("\u041c\u0418\u041d\u0421\u041a, \u0414\u0437\u0435\u0440\u0436\u0438\u043d\u0441\u043a\u043e\u0433\u043e 106<br/>BYR, USD, EUR</br>24 \u0447\u0430\u0441\u0430<br/>\u0422\u0426 \"\u041c\u0430\u0433\u043d\u0438\u0442\"");
+      marker_7._popup.options.maxWidth = 300;
+      clusteredmarkers.addLayer(marker_7)
+      
+      var marker_8_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_8 = L.marker([53.85107, 
+							27.47668],
+							{'icon':marker_8_icon}
+							);
+      marker_8.bindPopup("\u041c\u0418\u041d\u0421\u041a, \u0414\u0437\u0435\u0440\u0436\u0438\u043d\u0441\u043a\u043e\u0433\u043e 119<br/>BYR, USD, EUR</br>24 \u0447\u0430\u0441\u0430<br/>\u0417\u0410\u041e \"\u0410\u043b\u044c\u0444\u0430-\u0411\u0430\u043d\u043a\"");
+      marker_8._popup.options.maxWidth = 300;
+      clusteredmarkers.addLayer(marker_8)
+      
+      var marker_9_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_9 = L.marker([53.85107, 
+							27.47668],
+							{'icon':marker_9_icon}
+							);
+      marker_9.bindPopup("\u041c\u0418\u041d\u0421\u041a, \u0414\u0437\u0435\u0440\u0436\u0438\u043d\u0441\u043a\u043e\u0433\u043e 119<br/>BYR, USD, EUR</br>24 \u0447\u0430\u0441\u0430<br/>\u0417\u0410\u041e \"\u0418\u0434\u0435\u044f \u0411\u0430\u043d\u043a\"");
+      marker_9._popup.options.maxWidth = 300;
+      clusteredmarkers.addLayer(marker_9)
+      
+      var marker_10_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_10 = L.marker([53.869465, 
+							27.49011],
+							{'icon':marker_10_icon}
+							);
+      marker_10.bindPopup("\u041c\u0418\u041d\u0421\u041a, \u0414\u0437\u0435\u0440\u0436\u0438\u043d\u0441\u043a\u043e\u0433\u043e 80<br/>BYR, USD, EUR</br>24 \u0447\u0430\u0441\u0430<br/>\u0417\u0410\u041e \"\u0411\u0421\u0411 \u0411\u0430\u043d\u043a\"");
+      marker_10._popup.options.maxWidth = 300;
+      clusteredmarkers.addLayer(marker_10)
+      
+      var marker_11_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_11 = L.marker([53.87196, 
+							27.502569],
+							{'icon':marker_11_icon}
+							);
+      marker_11.bindPopup("\u041c\u0418\u041d\u0421\u041a, \u0416\u0435\u043b\u0435\u0437\u043d\u043e\u0434\u043e\u0440\u043e\u0436\u043d\u0430\u044f 33<br/>BYR, USD, EUR</br>24 \u0447\u0430\u0441\u0430<br/>\u0412\u0438\u0437\u043e\u0432\u044b\u0439 \u0426\u0435\u043d\u0442\u0440");
+      marker_11._popup.options.maxWidth = 300;
+      clusteredmarkers.addLayer(marker_11)
+      
+      var marker_12_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_12 = L.marker([53.876467, 
+							27.630274],
+							{'icon':marker_12_icon}
+							);
+      marker_12.bindPopup("\u041c\u0418\u041d\u0421\u041a, \u0416\u0438\u043b\u0443\u043d\u043e\u0432\u0438\u0447\u0430 4<br/>BYR, USD, EUR</br>9:00 - 21:00 (\u043f\u043d. - \u0441\u0431.) 10:00 - 20:00 (\u0432\u0441.)<br/>\u0423\u043d\u0438\u0432\u0435\u0440\u043c\u0430\u0433 \"\u0411\u0435\u043b\u0430\u0440\u0443\u0441\u044c\"");
+      marker_12._popup.options.maxWidth = 300;
+      clusteredmarkers.addLayer(marker_12)
+      
+      var marker_13_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_13 = L.marker([53.908018, 
+							27.527318],
+							{'icon':marker_13_icon}
+							);
+      marker_13.bindPopup("\u041c\u0418\u041d\u0421\u041a, \u041a\u0430\u043b\u044c\u0432\u0430\u0440\u0438\u0439\u0441\u043a\u0430\u044f 24<br/>BYR, USD, EUR</br>9:00 - 2:00<br/>\u0422\u0414 \"\u041a\u043e\u0440\u043e\u043d\u0430\", 1 \u044d\u0442\u0430\u0436");
+      marker_13._popup.options.maxWidth = 300;
+      clusteredmarkers.addLayer(marker_13)
+      
+      var marker_14_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_14 = L.marker([53.892033, 
+							27.551006],
+							{'icon':marker_14_icon}
+							);
+      marker_14.bindPopup("\u041c\u0418\u041d\u0421\u041a, \u041a\u0438\u0440\u043e\u0432\u0430 1<br/>BYR, USD, EUR</br>24 \u0447\u0430\u0441\u0430<br/>\u0417\u0410\u041e \"\u0418\u0434\u0435\u044f \u0411\u0430\u043d\u043a\"");
+      marker_14._popup.options.maxWidth = 300;
+      clusteredmarkers.addLayer(marker_14)
+      
+      var marker_15_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_15 = L.marker([53.899509, 
+							27.565496],
+							{'icon':marker_15_icon}
+							);
+      marker_15.bindPopup("\u041c\u0418\u041d\u0421\u041a, \u041a\u0438\u0440\u043e\u0432\u0430 18<br/>BYR, USD, EUR</br>24 \u0447\u0430\u0441\u0430<br/>\u0413\u043e\u0441\u0442\u0438\u043d\u0438\u0446\u0430 \"\u041f\u0440\u0435\u0437\u0438\u0434\u0435\u043d\u0442-\u041e\u0442\u0435\u043b\u044c\"");
+      marker_15._popup.options.maxWidth = 300;
+      clusteredmarkers.addLayer(marker_15)
+      
+      var marker_16_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_16 = L.marker([53.916679, 
+							27.557447],
+							{'icon':marker_16_icon}
+							);
+      marker_16.bindPopup("\u041c\u0418\u041d\u0421\u041a, \u041a\u0440\u043e\u043f\u043e\u0442\u043a\u0438\u043d\u0430 44<br/>BYR, USD, EUR</br>\u0432 \u0440\u0435\u0436\u0438\u043c\u0435 \u0440\u0430\u0431\u043e\u0442\u044b \u043e\u0440\u0433\u0430\u043d\u0438\u0437\u0430\u0446\u0438\u0438<br/>\u041e\u0410\u041e \"\u0422\u0435\u0445\u043d\u043e\u0431\u0430\u043d\u043a\"");
+      marker_16._popup.options.maxWidth = 300;
+      clusteredmarkers.addLayer(marker_16)
+      
+      var marker_17_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_17 = L.marker([53.927469, 
+							27.683427],
+							{'icon':marker_17_icon}
+							);
+      marker_17.bindPopup("\u041c\u0418\u041d\u0421\u041a, \u041a\u0443\u043f\u0440\u0435\u0432\u0438\u0447\u0430 3<br/>BYR, USD, EUR</br>\u0432 \u0440\u0435\u0436\u0438\u043c\u0435 \u0440\u0430\u0431\u043e\u0442\u044b \u043e\u0440\u0433\u0430\u043d\u0438\u0437\u0430\u0446\u0438\u0438<br/>\u0411\u0426 \"\u041a\u043b\u0435\u0432\u0435\u0440 \u041f\u0430\u0440\u043a\"");
+      marker_17._popup.options.maxWidth = 300;
+      clusteredmarkers.addLayer(marker_17)
+      
+      var marker_18_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_18 = L.marker([53.898066, 
+							27.542445],
+							{'icon':marker_18_icon}
+							);
+      marker_18.bindPopup("\u041c\u0418\u041d\u0421\u041a, \u041c\u044f\u0441\u043d\u0438\u043a\u043e\u0432\u0430 32<br/>BYR, USD, EUR</br>9:00 - 18:30 (\u043f\u043d. - \u0447\u0442.) 9:00 - 17:30 (\u043f\u0442., \u043f\u0440\u0435\u0434\u043f\u0440. \u0434\u043d\u0438)<br/>\u041e\u0410\u041e \"\u0411\u0430\u043d\u043a \u0411\u0435\u043b\u0412\u042d\u0411\"");
+      marker_18._popup.options.maxWidth = 300;
+      clusteredmarkers.addLayer(marker_18)
+      
+      var marker_19_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_19 = L.marker([53.898066, 
+							27.542445],
+							{'icon':marker_19_icon}
+							);
+      marker_19.bindPopup("\u041c\u0418\u041d\u0421\u041a, \u041c\u044f\u0441\u043d\u0438\u043a\u043e\u0432\u0430 32<br/>BYR, USD, EUR</br>24 \u0447\u0430\u0441\u0430<br/>\u041e\u0410\u041e \"\u0411\u0430\u043d\u043a \u0411\u0435\u043b\u0412\u042d\u0411\"");
+      marker_19._popup.options.maxWidth = 300;
+      clusteredmarkers.addLayer(marker_19)
+      
+      var marker_20_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_20 = L.marker([53.895222, 
+							27.540918],
+							{'icon':marker_20_icon}
+							);
+      marker_20.bindPopup("\u041c\u0418\u041d\u0421\u041a, \u041c\u044f\u0441\u043d\u0438\u043a\u043e\u0432\u0430 70<br/>BYR, USD, EUR</br>9:00 - 19:00 (\u043f\u043d. - \u043f\u0442.) 10:00 - 16:00 (\u0441\u0431.)<br/>\u0417\u0410\u041e \"\u0410\u043b\u044c\u0444\u0430-\u0411\u0430\u043d\u043a\"");
+      marker_20._popup.options.maxWidth = 300;
+      clusteredmarkers.addLayer(marker_20)
+      
+      var marker_21_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_21 = L.marker([53.933571, 
+							27.477147],
+							{'icon':marker_21_icon}
+							);
+      marker_21.bindPopup("\u041c\u0418\u041d\u0421\u041a, \u041d\u0430\u0440\u043e\u0447\u0430\u043d\u0441\u043a\u0430\u044f 6<br/>BYR, USD, EUR</br>24 \u0447\u0430\u0441\u0430<br/>\u0413\u043e\u0441\u0442\u0438\u043d\u0438\u0446\u0430 \"\u0421\u043b\u0430\u0432\u044f\u043d\u0441\u043a\u0430\u044f\"");
+      marker_21._popup.options.maxWidth = 300;
+      clusteredmarkers.addLayer(marker_21)
+      
+      var marker_22_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_22 = L.marker([53.896883, 
+							27.550809],
+							{'icon':marker_22_icon}
+							);
+      marker_22.bindPopup("\u041c\u0418\u041d\u0421\u041a, \u041d\u0435\u0437\u0430\u0432\u0438\u0441\u0438\u043c\u043e\u0441\u0442\u0438 11<br/>BYR, USD, EUR</br>24 \u0447\u0430\u0441\u0430<br/>\u041e\u0442\u0435\u043b\u044c \"\u041c\u0438\u043d\u0441\u043a\"");
+      marker_22._popup.options.maxWidth = 300;
+      clusteredmarkers.addLayer(marker_22)
+      
+      var marker_23_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_23 = L.marker([53.93823, 
+							27.481647],
+							{'icon':marker_23_icon}
+							);
+      marker_23.bindPopup("\u041c\u0418\u041d\u0421\u041a, \u041f\u043e\u0431\u0435\u0434\u0438\u0442\u0435\u043b\u0435\u0439 100<br/>BYR, USD, EUR</br>24 \u0447\u0430\u0441\u0430<br/>\u041e\u0410\u041e \"\u0411\u0430\u043d\u043a \u0411\u0435\u043b\u0412\u042d\u0411\"");
+      marker_23._popup.options.maxWidth = 300;
+      clusteredmarkers.addLayer(marker_23)
+      
+      var marker_24_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_24 = L.marker([53.93823, 
+							27.481647],
+							{'icon':marker_24_icon}
+							);
+      marker_24.bindPopup("\u041c\u0418\u041d\u0421\u041a, \u041f\u043e\u0431\u0435\u0434\u0438\u0442\u0435\u043b\u0435\u0439 100<br/>BYR, USD, EUR</br>24 \u0447\u0430\u0441\u0430<br/>\u041e\u0410\u041e \"\u0411\u0430\u043d\u043a \u0411\u0435\u043b\u0412\u042d\u0411\"");
+      marker_24._popup.options.maxWidth = 300;
+      clusteredmarkers.addLayer(marker_24)
+      
+      var marker_25_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_25 = L.marker([53.934387, 
+							27.50451],
+							{'icon':marker_25_icon}
+							);
+      marker_25.bindPopup("\u041c\u0418\u041d\u0421\u041a, \u041f\u043e\u0431\u0435\u0434\u0438\u0442\u0435\u043b\u0435\u0439 20/3<br/>BYR, USD, EUR</br>7:00 - 21:00<br/>\u0417\u0410\u041e \"\u0410\u043b\u044c\u0444\u0430-\u0411\u0430\u043d\u043a\"");
+      marker_25._popup.options.maxWidth = 300;
+      clusteredmarkers.addLayer(marker_25)
+      
+      var marker_26_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_26 = L.marker([53.911444, 
+							27.541242],
+							{'icon':marker_26_icon}
+							);
+      marker_26.bindPopup("\u041c\u0418\u041d\u0421\u041a, \u041f\u043e\u0431\u0435\u0434\u0438\u0442\u0435\u043b\u0435\u0439 23/3<br/>BYR, USD, EUR</br>9:00 - 17:00 (\u043f\u043d. - \u043f\u0442.)<br/>\u0417\u0410\u041e \"\u0411\u0421\u0411 \u0411\u0430\u043d\u043a\"");
+      marker_26._popup.options.maxWidth = 300;
+      clusteredmarkers.addLayer(marker_26)
+      
+      var marker_27_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_27 = L.marker([53.912229, 
+							27.541242],
+							{'icon':marker_27_icon}
+							);
+      marker_27.bindPopup("\u041c\u0418\u041d\u0421\u041a, \u041f\u043e\u0431\u0435\u0434\u0438\u0442\u0435\u043b\u0435\u0439 29<br/>BYR, USD, EUR</br>24 \u0447\u0430\u0441\u0430<br/>\u041e\u0410\u041e \"\u0411\u0430\u043d\u043a \u0411\u0435\u043b\u0412\u042d\u0411\"");
+      marker_27._popup.options.maxWidth = 300;
+      clusteredmarkers.addLayer(marker_27)
+      
+      var marker_28_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_28 = L.marker([53.912229, 
+							27.541242],
+							{'icon':marker_28_icon}
+							);
+      marker_28.bindPopup("\u041c\u0418\u041d\u0421\u041a, \u041f\u043e\u0431\u0435\u0434\u0438\u0442\u0435\u043b\u0435\u0439 29<br/>BYR, USD, EUR</br>24 \u0447\u0430\u0441\u0430<br/>\u041e\u0410\u041e \"\u0411\u0430\u043d\u043a \u0411\u0435\u043b\u0412\u042d\u0411\"");
+      marker_28._popup.options.maxWidth = 300;
+      clusteredmarkers.addLayer(marker_28)
+      
+      var marker_29_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_29 = L.marker([53.92634, 
+							27.5174],
+							{'icon':marker_29_icon}
+							);
+      marker_29.bindPopup("\u041c\u0418\u041d\u0421\u041a, \u041f\u043e\u0431\u0435\u0434\u0438\u0442\u0435\u043b\u0435\u0439 65<br/>BYR, USD, EUR</br>9:00 - 23:00<br/>\u0422\u0426 \"\u0417\u0430\u043c\u043e\u043a\"");
+      marker_29._popup.options.maxWidth = 300;
+      clusteredmarkers.addLayer(marker_29)
+      
+      var marker_30_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_30 = L.marker([53.870548, 
+							27.535394],
+							{'icon':marker_30_icon}
+							);
+      marker_30.bindPopup("\u041c\u0418\u041d\u0421\u041a, \u043f\u043e\u0434\u0437\u0435\u043c\u043d\u044b\u0439 \u0443\u0440\u043e\u0432\u0435\u043d\u044c \u0436/\u0434 \u0432\u043e\u043a\u0437\u0430\u043b\u0430<br/>BYR, USD, EUR</br>24 \u0447\u0430\u0441\u0430<br/>\u041c\u0430\u0433\u0430\u0437\u0438\u043d \u211672 \"\u0420\u043e\u044f\u043b\"");
+      marker_30._popup.options.maxWidth = 300;
+      clusteredmarkers.addLayer(marker_30)
+      
+      var marker_31_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_31 = L.marker([53.910564, 
+							27.506046],
+							{'icon':marker_31_icon}
+							);
+      marker_31.bindPopup("\u041c\u0418\u041d\u0421\u041a, \u041f\u0440\u0438\u0442\u044b\u0446\u043a\u043e\u0433\u043e 2<br/>BYR, USD, EUR</br>24 \u0447\u0430\u0441\u0430<br/>\u0413\u043e\u0441\u0442\u0438\u043d\u0438\u0446\u0430 \"BonHotel\"");
+      marker_31._popup.options.maxWidth = 300;
+      clusteredmarkers.addLayer(marker_31)
+      
+      var marker_32_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_32 = L.marker([53.906108, 
+							27.436974],
+							{'icon':marker_32_icon}
+							);
+      marker_32.bindPopup("\u041c\u0418\u041d\u0421\u041a, \u041f\u0440\u0438\u0442\u044b\u0446\u043a\u043e\u0433\u043e 97<br/>BYR, USD, EUR</br>24 \u0447\u0430\u0441\u0430<br/>\u0417\u0410\u041e \"\u0418\u0434\u0435\u044f \u0411\u0430\u043d\u043a\"");
+      marker_32._popup.options.maxWidth = 300;
+      clusteredmarkers.addLayer(marker_32)
+      
+      var marker_33_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_33 = L.marker([53.868217, 
+							27.599255],
+							{'icon':marker_33_icon}
+							);
+      marker_33.bindPopup("\u041c\u0418\u041d\u0421\u041a, \u0420\u043e\u043a\u043e\u0441\u0441\u043e\u0432\u0441\u043a\u043e\u0433\u043e 62<br/>BYR, USD, EUR</br>24 \u0447\u0430\u0441\u0430<br/>\u0422\u0414 \"\u041f\u043e\u043b\u0435\u0441\u044c\u0435\"");
+      marker_33._popup.options.maxWidth = 300;
+      clusteredmarkers.addLayer(marker_33)
+      
+      var marker_34_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_34 = L.marker([53.894172, 
+							27.542957],
+							{'icon':marker_34_icon}
+							);
+      marker_34.bindPopup("\u041c\u0418\u041d\u0421\u041a, \u0421\u043e\u0432\u0435\u0442\u0441\u043a\u0430\u044f 12<br/>BYR, USD, EUR</br>24 \u0447\u0430\u0441\u0430<br/>\u0417\u0410\u041e \"\u0410\u043b\u044c\u0444\u0430-\u0411\u0430\u043d\u043a\"");
+      marker_34._popup.options.maxWidth = 300;
+      clusteredmarkers.addLayer(marker_34)
+      
+      var marker_35_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_35 = L.marker([53.921642, 
+							27.549857],
+							{'icon':marker_35_icon}
+							);
+      marker_35.bindPopup("\u041c\u0418\u041d\u0421\u041a, \u0421\u0442\u0430\u0440\u043e\u0432\u0438\u043b\u0435\u043d\u0441\u043a\u0438\u0439 \u0442\u0440\u0430\u043a\u0442 6<br/>BYR, USD, EUR</br>24 \u0447\u0430\u0441\u0430<br/>1-\u0439 \u044d\u0442\u0430\u0436 \u0436\u0438\u043b\u043e\u0433\u043e \u0434\u043e\u043c\u0430");
+      marker_35._popup.options.maxWidth = 300;
+      clusteredmarkers.addLayer(marker_35)
+      
+      var marker_36_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_36 = L.marker([53.926849, 
+							27.589382],
+							{'icon':marker_36_icon}
+							);
+      marker_36.bindPopup("\u041c\u0418\u041d\u0421\u041a, \u0421\u0443\u0440\u0433\u0430\u043d\u043e\u0432\u0430 43<br/>BYR, USD, EUR</br>\u0432 \u0440\u0435\u0436\u0438\u043c\u0435 \u0440\u0430\u0431\u043e\u0442\u044b \u043e\u0440\u0433\u0430\u043d\u0438\u0437\u0430\u0446\u0438\u0438<br/>\u0417\u0410\u041e \"\u0410\u043b\u044c\u0444\u0430-\u0411\u0430\u043d\u043a\"");
+      marker_36._popup.options.maxWidth = 300;
+      clusteredmarkers.addLayer(marker_36)
+      
+      var marker_37_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_37 = L.marker([53.929102, 
+							27.587649],
+							{'icon':marker_37_icon}
+							);
+      marker_37.bindPopup("\u041c\u0418\u041d\u0421\u041a, \u0421\u0443\u0440\u0433\u0430\u043d\u043e\u0432\u0430 50<br/>BYR, USD, EUR</br>24 \u0447\u0430\u0441\u0430<br/>\u0422\u0426 \"\u0420\u0438\u0433\u0430\"");
+      marker_37._popup.options.maxWidth = 300;
+      clusteredmarkers.addLayer(marker_37)
+      
+      var marker_38_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_38 = L.marker([53.87496, 
+							27.498212],
+							{'icon':marker_38_icon}
+							);
+      marker_38.bindPopup("\u041c\u0418\u041d\u0421\u041a, \u0423\u043c\u0430\u043d\u0441\u043a\u0430\u044f 54<br/>BYR, USD, EUR</br>24 \u0447\u0430\u0441\u0430<br/>\u0417\u0410\u041e \"\u0418\u0434\u0435\u044f \u0411\u0430\u043d\u043a\"");
+      marker_38._popup.options.maxWidth = 300;
+      clusteredmarkers.addLayer(marker_38)
+      
+      var marker_39_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_39 = L.marker([53.916249, 
+							27.579519],
+							{'icon':marker_39_icon}
+							);
+      marker_39.bindPopup("\u041c\u0418\u041d\u0421\u041a, \u0425\u043e\u0440\u0443\u0436\u0435\u0439 1\u0430<br/>BYR, USD, EUR</br>24 \u0447\u0430\u0441\u0430<br/>\u0422\u043e\u0440\u0433\u043e\u0432\u044b\u0439 \u0446\u0435\u043d\u0442\u0440");
+      marker_39._popup.options.maxWidth = 300;
+      clusteredmarkers.addLayer(marker_39)
+      
+      var marker_40_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_40 = L.marker([53.921531, 
+							27.568901],
+							{'icon':marker_40_icon}
+							);
+      marker_40.bindPopup("\u041c\u0418\u041d\u0421\u041a, \u0425\u043e\u0440\u0443\u0436\u0435\u0439 18\u0430<br/>BYR, USD, EUR</br>24 \u0447\u0430\u0441\u0430<br/>\u0417\u0410\u041e \"\u0418\u0434\u0435\u044f \u0411\u0430\u043d\u043a\"");
+      marker_40._popup.options.maxWidth = 300;
+      clusteredmarkers.addLayer(marker_40)
+      
+      var marker_41_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_41 = L.marker([53.880756, 
+							27.518227],
+							{'icon':marker_41_icon}
+							);
+      marker_41.bindPopup("\u041c\u0418\u041d\u0421\u041a, \u0429\u043e\u0440\u0441\u0430 1\u0430<br/>BYR, USD, EUR</br>24 \u0447\u0430\u0441\u0430<br/>\u0410\u043f\u0430\u0440\u0442-\u043e\u0442\u0435\u043b\u044c \"\u041a\u043e\u043c\u0444\u043e\u0440\u0442\"");
+      marker_41._popup.options.maxWidth = 300;
+      clusteredmarkers.addLayer(marker_41)
+      
+      var marker_42_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_42 = L.marker([52.089554, 
+							23.685583],
+							{'icon':marker_42_icon}
+							);
+      marker_42.bindPopup("\u0411\u0420\u0415\u0421\u0422, \u041a\u043e\u043c\u043c\u0443\u043d\u0438\u0441\u0442\u0438\u0447\u0435\u0441\u043a\u0430\u044f 24<br/>BYR, USD, EUR</br>24 \u0447\u0430\u0441\u0430<br/>\u041e\u0410\u041e \"\u0411\u0430\u043d\u043a \u041c\u043e\u0441\u043a\u0432\u0430-\u041c\u0438\u043d\u0441\u043a\"");
+      marker_42._popup.options.maxWidth = 300;
+      clusteredmarkers.addLayer(marker_42)
+      
+      var marker_43_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_43 = L.marker([52.091662, 
+							23.694395],
+							{'icon':marker_43_icon}
+							);
+      marker_43.bindPopup("\u0411\u0420\u0415\u0421\u0422, \u0421\u043e\u0432\u0435\u0442\u0441\u043a\u0430\u044f 56<br/>BYR, USD, EUR</br>24 \u0447\u0430\u0441\u0430<br/>\u0417\u0410\u041e \"\u0410\u043b\u044c\u0444\u0430-\u0411\u0430\u043d\u043a\"");
+      marker_43._popup.options.maxWidth = 300;
+      clusteredmarkers.addLayer(marker_43)
+      
+      var marker_44_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_44 = L.marker([55.193109, 
+							30.204459],
+							{'icon':marker_44_icon}
+							);
+      marker_44.bindPopup("\u0412\u0418\u0422\u0415\u0411\u0421\u041a, \u0417\u0430\u043c\u043a\u043e\u0432\u0430\u044f 4<br/>BYR, USD, EUR</br>24 \u0447\u0430\u0441\u0430<br/>\u0410\u043f\u0442\u0435\u043a\u0430 \"\u041f\u043b\u0430\u043d\u0435\u0442\u0430 \u0417\u0434\u043e\u0440\u043e\u0432\u044c\u044f\"");
+      marker_44._popup.options.maxWidth = 300;
+      clusteredmarkers.addLayer(marker_44)
+      
+      var marker_45_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_45 = L.marker([55.191269, 
+							30.203812],
+							{'icon':marker_45_icon}
+							);
+      marker_45.bindPopup("\u0412\u0418\u0422\u0415\u0411\u0421\u041a, \u041b\u0435\u043d\u0438\u043d\u0430 26\u0430<br/>BYR, USD, EUR</br>24 \u0447\u0430\u0441\u0430<br/>\u0422\u0420\u041a \"\u041c\u0430\u0440\u043a\u043e \u0421\u0438\u0442\u0438\"");
+      marker_45._popup.options.maxWidth = 300;
+      clusteredmarkers.addLayer(marker_45)
+      
+      var marker_46_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_46 = L.marker([52.422711, 
+							31.002271],
+							{'icon':marker_46_icon}
+							);
+      marker_46.bindPopup("\u0413\u041e\u041c\u0415\u041b\u042c, \u0413\u0430\u0433\u0430\u0440\u0438\u043d\u0430 55<br/>BYR, USD, EUR</br>24 \u0447\u0430\u0441\u0430<br/>\u041e\u0410\u041e \"\u0411\u0430\u043d\u043a \u0411\u0435\u043b\u0412\u042d\u0411\"");
+      marker_46._popup.options.maxWidth = 300;
+      clusteredmarkers.addLayer(marker_46)
+      
+      var marker_47_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_47 = L.marker([52.42986, 
+							30.995713],
+							{'icon':marker_47_icon}
+							);
+      marker_47.bindPopup("\u0413\u041e\u041c\u0415\u041b\u042c, \u041b\u0435\u043d\u0438\u043d\u0430 34<br/>BYR, USD, EUR</br>24 \u0447\u0430\u0441\u0430<br/>\u041e\u0410\u041e \"\u0411\u0430\u043d\u043a \u041c\u043e\u0441\u043a\u0432\u0430-\u041c\u0438\u043d\u0441\u043a\"");
+      marker_47._popup.options.maxWidth = 300;
+      clusteredmarkers.addLayer(marker_47)
+      
+      var marker_48_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_48 = L.marker([53.675519, 
+							23.841872],
+							{'icon':marker_48_icon}
+							);
+      marker_48.bindPopup("\u0413\u0420\u041e\u0414\u041d\u041e, \u0410\u043d\u0442\u043e\u043d\u043e\u0432\u0430 10<br/>BYR, USD, EUR</br>24 \u0447\u0430\u0441\u0430<br/>\u0413\u043e\u0441\u0442\u0438\u043d\u0438\u0446\u0430 \"\u0421\u0435\u043c\u0430\u0448\u043a\u043e\"");
+      marker_48._popup.options.maxWidth = 300;
+      clusteredmarkers.addLayer(marker_48)
+      
+      var marker_49_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_49 = L.marker([53.903578, 
+							30.345971],
+							{'icon':marker_49_icon}
+							);
+      marker_49.bindPopup("\u041c\u041e\u0413\u0418\u041b\u0415\u0412, \u041f\u0438\u043e\u043d\u0435\u0440\u0441\u043a\u0430\u044f 37\u0430<br/>BYR, USD, EUR</br>24 \u0447\u0430\u0441\u0430<br/>\u041e\u0410\u041e \"\u0411\u0430\u043d\u043a \u041c\u043e\u0441\u043a\u0432\u0430-\u041c\u0438\u043d\u0441\u043a\"");
+      marker_49._popup.options.maxWidth = 300;
+      clusteredmarkers.addLayer(marker_49)
+      
+      var marker_50_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_50 = L.marker([54.211903, 
+							28.486934],
+							{'icon':marker_50_icon}
+							);
+      marker_50.bindPopup("\u0411\u041e\u0420\u0418\u0421\u041e\u0412, \u0413\u0430\u0433\u0430\u0440\u0438\u043d\u0430 60<br/>BYR, EUR</br>24 \u0447\u0430\u0441\u0430<br/>\u041c\u0430\u0433\u0430\u0437\u0438\u043d \"\u0414\u043e\u043c\u0430\u0448\u043d\u0438\u0439\"");
+      marker_50._popup.options.maxWidth = 300;
+      clusteredmarkers.addLayer(marker_50)
+      
+      var marker_51_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_51 = L.marker([53.742064, 
+							27.355695],
+							{'icon':marker_51_icon}
+							);
+      marker_51.bindPopup("\u0424\u0410\u041d\u0418\u041f\u041e\u041b\u042c, \u0417\u0430\u0432\u043e\u0434\u0441\u043a\u0430\u044f 47<br/>BYR, USD, EUR</br>\u0432 \u0440\u0435\u0436\u0438\u043c\u0435 \u0440\u0430\u0431\u043e\u0442\u044b \u043e\u0440\u0433\u0430\u043d\u0438\u0437\u0430\u0446\u0438\u0438<br/>\u0417\u0430\u0432\u043e\u0434 \"\u0428\u0442\u0430\u0434\u043b\u0435\u0440\"");
+      marker_51._popup.options.maxWidth = 300;
+      clusteredmarkers.addLayer(marker_51)
+      
+      var marker_52_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_52 = L.marker([54.310352, 
+							26.841517],
+							{'icon':marker_52_icon}
+							);
+      marker_52.bindPopup("\u041c\u041e\u041b\u041e\u0414\u0415\u0427\u041d\u041e, \u0412\u043e\u043b\u044b\u043d\u0446\u0430 12<br/>BYR, USD, EUR</br>24 \u0447\u0430\u0441\u0430<br/>\u041e\u0410\u041e \"\u0411\u0430\u043d\u043a \u041c\u043e\u0441\u043a\u0432\u0430-\u041c\u0438\u043d\u0441\u043a\"");
+      marker_52._popup.options.maxWidth = 300;
+      clusteredmarkers.addLayer(marker_52)
+      
+      var marker_53_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_53 = L.marker([54.528597, 
+							30.427942],
+							{'icon':marker_53_icon}
+							);
+      marker_53.bindPopup("\u041e\u0420\u0428\u0410, 1 \u041c\u0430\u044f 68<br/>BYR, USD, EUR</br>24 \u0447\u0430\u0441\u0430<br/>\u0421\u0442\u043e\u043b\u043e\u0432\u0430\u044f \u041e\u0410\u041e \"\u041e\u0440\u0448\u0430\u0441\u0442\u0440\u043e\u0439\u043c\u0430\u0442\u0435\u0440\u0438\u0430\u043b\u044b\"");
+      marker_53._popup.options.maxWidth = 300;
+      clusteredmarkers.addLayer(marker_53)
+      
+      //add the clustered markers to the group anyway
+      map.addLayer(clusteredmarkers);
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+
+
+   </script>
+
+</body>
