@@ -1,7 +1,8 @@
 # coding: utf-8
 
-import re
+import json
 import logging
+import re
 
 import sqlalchemy as sa
 
@@ -16,10 +17,6 @@ Base = declarative_base()
 Session = sessionmaker()
 
 # список районов: http://globus.tut.by/regions_ar.htm
-
-addr_tuple = namedtuple('addr_tuple',
-                        'kind adm_area locality street '
-                        'premise_number latitude longitude')
 
 
 class Address(Base):
@@ -44,27 +41,16 @@ class AddressLookup(object):
         Base.metadata.create_all(self.engine)
 
     def _preprocess_addr_str(self, addr_str):
-        if not isinstance(addr_str, unicode):
-            addr_str = addr_str.decode('utf-8')
-        addr_str = re.sub(ur'(\s+)аг.', ur'\1пос.', addr_str, flags=re.U)
-        addr_str = re.sub(ur'\b(могилев\b.*)(\bпушкина\b)', ur'\1пушкинский',
-                          addr_str, flags=re.U)
-        if u'могилев' in addr_str:
-            addr_str = re.sub(ur'(\s+)пушкина', ur'\1пушкинский', addr_str)
+        addr_str = _to_unicode(addr_str).lower()
         if u'беларусь' not in addr_str:
             addr_str = u'беларусь, ' + addr_str
+        addr_str = re.sub(ur'\bаг.', ur'пос.', addr_str, flags=re.U)
+        addr_str = re.sub(ur'\b(могилев\b.*)(\bпушкина\b)', ur'\1пушкинский',
+                          addr_str, flags=re.U)
+        addr_str = re.sub(ur'\b(минск\b.*)(\bаэропорт\s+минск.*\b2\b)',
+                          ur'\1национальный аэропорт минск',
+                          addr_str, flags=re.U)
         return addr_str
-
-    def set_address(self, addr_str, description, addr_tuple, session=None):
-        local_session = session is None
-        if local_session:
-            session = Session(bind=self.engine)
-
-        session.add(Address(
-            addr_str=addr_str, description=description,
-            **addr_tuple._as_dict()))
-        if local_session:
-            session.commit()
 
     def get_address(self, addr_str, description):
         """
@@ -72,23 +58,30 @@ class AddressLookup(object):
         :return: (lat, lon) tuple
         """
         preprocessed = self._preprocess_addr_str(addr_str)
+        description = _to_unicode(description)
         session = Session(bind=self.engine)
         entry = session.query(Address).filter(
             Address.addr_str == preprocessed
         ).first()
         if entry is None:
-            fetched = self._fetch_address_from_yandex(preprocessed)
+            fetched = self._fetch_address_from_yandex(
+                preprocessed, description)
             if fetched is None:
-                raise RuntimeError("Couldn't find addr: %s" % preprocessed)
-            set_address
+                fetched = {}
+            logger.info("Address %s (%s) was resolved to: %s",
+                        preprocessed, description,
+                        json.dumps(fetched, indent=1, ensure_ascii=False))
             entry = Address(
                 addr_str=preprocessed,
-                adm_area=fetched['adm_area'],
-                locality=fetched['locality'],
-                street=fetched['street'],
-                premise_number=fetched['premise_number'],
-                latitude=fetched['latitude'],
-                longitude=fetched['longitude'],
+                description=description,
+
+                kind=fetched.get('kind'),
+                adm_area=fetched.get('adm_area'),
+                locality=fetched.get('locality'),
+                street=fetched.get('street'),
+                premise_number=fetched.get('premise_number'),
+                latitude=fetched.get('latitude'),
+                longitude=fetched.get('longitude'),
                 verified=False,
             )
             session.add(entry)
@@ -96,12 +89,25 @@ class AddressLookup(object):
         return entry
 
     @staticmethod
-    def _fetch_address_from_yandex(addr_str):
+    def _fetch_address_from_yandex(addr_str, description):
         addrs = get_addresses_from_yandex(addr_str)
+        for addr in addrs:
+            if addr['kind'] in ('house', 'airport', 'railway'):
+                return addr
+        addrs = get_addresses_from_yandex(addr_str + ', ' + description)
+        for addr in addrs:
+            if addr['kind'] in ('house', 'airport', 'railway'):
+                return addr
+        logger.error("Couldn't find kind=house address for: %s\n%s",
+                     addr_str, json.dumps(addrs, indent=1, ensure_ascii=False))
         if not addrs:
             return None
-        for addr in addrs:
-            if addr['kind'] == 'house':
-                return addr
-        logger.error("Couldn't find kind=house address for: %s", addr_str)
         return addrs[0]
+
+
+def _to_unicode(text, encoding='utf-8'):
+    if isinstance(text, unicode):
+        return text
+    if isinstance(text, bytes):
+        return text.decode(encoding)
+    raise TypeError("Text must be unicode or bytes")
